@@ -1,4 +1,4 @@
-//code to verify the trigonometric idetity for a few values of theta
+//code to verify the trigonometric identity for a few values of theta
 
 #include <stdio.h>
 #include <math.h>
