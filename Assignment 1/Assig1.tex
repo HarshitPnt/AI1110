@@ -1,0 +1,53 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[font=normalsize,labelfont=bf]{caption}
+\title{Assignment 1}
+\author{\Large{Name : Harshit Pant}\\\Large{Roll Number : CS21BTECH11021}}
+\date{}
+\begin{document}
+\maketitle
+\setlength{\parindent}{0cm}
+\textbf{Q.6(c) [ICSE 2018] :}
+Prove that,\\[.1in]
+$(1 +\cot\theta -\csc\theta)(1 + \tan\theta +\sec\theta)=2$\\[.1in]
+\textbf{Solution : }
+\begingroup
+\addtolength{\jot}{0.1in}
+\begin{align}
+\text{L.H.S.}&=(1+ \cot\theta -\csc\theta)(1+\tan\theta+\sec\theta)\\
+\begin{split}
+&=1+\cot\theta-\csc\theta+\tan\theta+\tan\theta\cot\theta\\
+&\qquad-\tan\theta\csc\theta+\sec\theta+\sec\theta\cot\theta\\
+&\qquad-\sec\theta\csc\theta\\
+\end{split}\\
+\begin{split}
+&=2+\cot\theta-\csc\theta+\tan\theta\\
+&\qquad
+-\frac{\cancel{\sin\theta}}{\cos\theta}\frac{1}{\cancel{\sin\theta}}+\sec\theta+\frac{1}{\cancel{\cos\theta}}\frac{\cancel{\cos\theta}}{\sin\theta}\\
+&\qquad
+-\sec\theta\csc\theta
+\end{split}\\
+\begin{split}
+&=2+\cot\theta-\cancel{\csc\theta}+\tan\theta-\cancel{\sec\theta}\\
+&\qquad+\cancel{\sec\theta}+\cancel{\csc\theta}-\sec\theta\times\csc\theta\\
+\end{split}\\
+&=2+\dfrac{\cos\theta}{\sin\theta}+\dfrac{\sin\theta}{\cos\theta}-\sec\theta\times\csc\theta\\
+&=2+\dfrac{{\cos}^2\theta+{\sin}^2\theta}{\sin\theta\times\cos\theta}-\sec\theta\times\csc\theta\\
+\begin{split}
+&=2+\frac{1}{\sin\theta\times\cos\theta}-\sec\theta\times\csc\theta\\
+\end{split}\\
+&=2+\cancel{\csc\theta\times\sec\theta}-\cancel{\sec\theta\times\csc\theta}\\
+&=2
+\end{align}
+\endgroup
+\textbf{\Large{Output}}\\[.1in]
+Below is the output of a C program to verify the trigonometric identity at some values of theta.
+\begin{figure}[H]
+\includegraphics[width=3.5in]{fig.png}
+\caption{Value of trigonometric expression at some values of theta}
+\end{figure}
+
+\end{document}
