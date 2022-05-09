@@ -1,0 +1,67 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{cellspace}
+\usepackage{longtable}
+%\usepackage{bigstrut}
+\usepackage{enumerate}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\title{Assignment 4}
+\author{Harshit Pant\\CS21BTECH11021}
+\date{}
+%\def\inputGnumericTable{}
+\begin{document}
+\maketitle
+\begin{abstract}
+This document contains the solution to Example 14 of Chapter 16 (Probability) in the NCERT Class 11 Exemplar.
+\end{abstract}
+\textbf{Example 14:} On her vacations Veena visits four cities (A,B,C and D) in a random order. What is the probability that she visits,
+\begin{enumerate}[(i)]
+\item A before B?
+\item A before B and B before C?
+\item A first and B last?
+\item A either first or second?
+\item A just before B?
+\end{enumerate}
+
+\textbf{Solution:} Let $S$ denote the sample space of all possible ways of visiting these 4 trips, $n(S)=4!$.
+\begingroup
+\addtolength{\jot}{.1in}
+\begin{enumerate}[(i)]
+\item Let $E_1$ denote the event when Veena visits A before B.
+\begin{align}
+\pr{E_1}&=\frac{n(E_1)}{n(S)}\\
+n(E_1)&=\frac{4!}{2!}\\
+\pr{E_1}&=\frac{1}{2}
+\end{align}
+\item Let $E_2$ denote the event when Veena visits A before B and B before C.
+\begin{align}
+\pr{E_2}&=\frac{n(E_2)}{n(S)}\\
+n(E_2)&=\frac{4!}{3!}\\
+\pr{E_2}&=\frac{1}{6}
+\end{align}
+\item Let $E_3$ denote the event when Veena visits A first and B last.
+\begin{align}
+\pr{E_3}&=\frac{n(E_3)}{n(S)}\\
+n(E_3)&=2!\\
+\pr{E_3}&=\frac{1}{12}
+\end{align}
+\item Let $E_4$ denote the event when Veena visits A either first or second.
+\begin{align}
+\pr{E_4}&=\frac{n(E_4)}{n(S)}\\
+n(E_4)&={2\choose 1}\times3!\\
+\pr{E_4}&=\frac{1}{2}
+\end{align}
+\item Let $E_5$ denote the event when Veena visits A just before B.
+\begin{align}
+\pr{E_5}&=\frac{n(E_5)}{n(S)}\\
+n(E_5)&=3!\\
+\pr{E_5}&=\frac{1}{4}
+\end{align}
+\end{enumerate}
+\endgroup
+\end{document}
