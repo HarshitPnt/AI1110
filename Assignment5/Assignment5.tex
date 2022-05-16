@@ -1,0 +1,93 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usepackage{enumerate}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{cellspace}
+\usepackage{longtable}
+\newcounter{saveenumerate}
+\newcommand{\saveenumerate}{\setcounter{saveenumerate}{\value{enumi}}}
+\newcommand{\restartenumerate}{\setcounter{enumi}{\value{saveenumerate}}}
+\title{Assignment 5} 
+\author{Harshit Pant\\CS21BTECH11021}
+\date{}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+%\logo{\large \LaTeX{}}
+\begin{document}
+\begin{frame}
+    \titlepage 
+\end{frame}
+\begin{frame}{Outline}
+    %\tableofcontents
+\begin{abstract}
+This document contains the solution to Exercise 13.2 Question 11 of Chapter 13 (Probability) in the NCERT Class 12 Exemplar.
+\end{abstract}
+\textbf{Ex 13.2 Q)11: }Given two independent events A and B such that $\pr{A}=0.3$, $\pr{B}=0.6$. Find
+\begin{enumerate}[i]
+\item $\pr{AB}$
+\item $\pr{AB'}$
+\item $\pr{A+B}$
+\item $\pr{A'B'}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\textbf{Solution:} 
+\begin{enumerate}[i]
+\item Since A and B are independent events.
+		\begin{align}
+		\pr{AB}&=\pr{A}\times\pr{B}\\
+			\pr{AB}&=0.3\times0.6\\
+			\pr{AB}&=0.18
+			\end{align}
+			%\end{enumerate}
+			%\end{frame}
+\item  %Since B is an independent event $\therefore\,B'$ is also an independent event.
+			\begin{align}
+			A&=A(B+B')\\
+			A&=AB+AB'
+			\end{align}
+			Since $AB$ and $AB'$ are mutually exclusive events $\therefore$
+			\begin{align}
+			\pr{A}&=\pr{AB}+\pr{AB'}\\
+			\pr{AB'}&=\pr{A}-\pr{AB}\\
+			\pr{AB'}&=0.3-0.18\\
+			\pr{AB'}&=0.12
+			\end{align}
+			\saveenumerate
+			\end{enumerate}
+			\end{frame}
+			\begin{frame}
+			\begin{enumerate}[i]
+			\restartenumerate
+\item  \begin{align}
+			AB'+B&=(B+B')(B+A)\\
+			AB'+B&=B+A\\
+			\pr{A+B}&=\pr{AB'+B}
+			\end{align}
+			Since $AB'$ and $B$ are mutually exclusive events $\therefore$
+			\begin{align}
+			\pr{A+B}&=\pr{AB'}+\pr{B}
+			\end{align}
+			Substituting $\pr{AB'}$,
+			\begin{align}
+			\pr{A+B}&=\pr{B}+\pr{A}-\pr{AB}\\
+			\pr{A+B}&=0.3+0.6-0.18\\
+			\pr{A+ B}&=0.72
+			\end{align}
+			\saveenumerate
+			\end{enumerate}
+			\end{frame}
+			\begin{frame}
+			\begin{enumerate}[i]
+			\restartenumerate
+\item  By De-Morgan's Principle-
+			\begin{align}
+			\pr{A'B'}&=\pr{(A+B)'}\\
+			\pr{A'B'}&=1-0.72\\
+			\pr{A'B'}&=0.28
+			\end{align}		
+\end{enumerate}
+\end{frame}
+\end{document}
