@@ -1,0 +1,63 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usepackage{enumerate}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage{cellspace}
+\usepackage{longtable}
+\usepackage{hhline}
+\def\inputGnumericTable{}
+\usepackage{bigstrut}
+\newcounter{saveenumerate}
+\newcommand{\saveenumerate}{\setcounter{saveenumerate}{\value{enumi}}}
+\newcommand{\restartenumerate}{\setcounter{enumi}{\value{saveenumerate}}}
+\title{Assignment 6} 
+\author[CS21BTECH11021]{Harshit Pant\\CS21BTECH11021}
+\date{}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+%\logo{\large \LaTeX{}}
+\begin{document}
+\begin{frame}
+    \titlepage 
+\end{frame}
+\begin{frame}{Question}
+    %\tableofcontents
+%\begin{abstract}
+%This document contains the solution to Example 2.15  of Chapter 2 (The Axioms Of Probabiltiy) from the book Probability, Random Variables, and Stochastic Processes by Athanasios Papoulis.
+%\end{abstract}
+\textbf{Example 2.15 [Papoulis]:} A certain test for a particular cancer is known to be 95$\%$ accurate. A person submits to the test and the results are positive. Suppose that the person comes from a population of 100,000 where 2,000 people suffer from that disease. What can we conclude about the probability that the person under test has that particular cancer?
+\end{frame}
+\begin{frame}
+Let $X_1$ and $X_2$ be two Bernoulli Random Variables such that,
+\begin{table}[H]
+\centering
+\input{table1.tex}
+\caption{Bernoulli Distribution}
+\label{table:RV1}
+\end{table}
+\begin{table}[H]
+\centering
+\input{table2.tex}
+\caption{Bernoulli Distribution}
+\label{table:RV2}
+\end{table}
+\end{frame}
+\begin{frame}
+\begingroup
+\addtolength{\jot}{.1in}
+\begin{align}
+\pr{X_1=1|X_2=1}&=\dfrac{\pr{X_2=1|X_1=1}\pr{X_1=1}}{\pr{X_2=1}}\\
+\pr{X_2=1}&=\sum_{i=0}^1 \pr{X_2=1|X_1=i}\pr{X_1=i}\\
+\pr{X_2=1}&=0.05\times0.98 +0.95\times0.02\\
+\pr{X_2=1}&=0.068\\
+\pr{X_1=1|X_2=1}&=\dfrac{0.95\times0.02}{0.068}\\
+\pr{X_1=1|X_2=1}&=\dfrac{0.019}{0.068}\\
+\pr{X_1=1|X_2=1}&=0.2794
+\end{align}
+\endgroup
+\end{frame}
+\begin{frame}{Answer}
+Baye's theorem suggests that there is a 27.94$\%$ chance that this person has cancer even given he/she has been tested positive.
+\end{frame}
+\end{document}
