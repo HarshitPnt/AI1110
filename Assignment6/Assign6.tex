@@ -12,6 +12,7 @@
 \newcounter{saveenumerate}
 \newcommand{\saveenumerate}{\setcounter{saveenumerate}{\value{enumi}}}
 \newcommand{\restartenumerate}{\setcounter{enumi}{\value{saveenumerate}}}
+\setlength{\abovedisplayskip}{0in}
 \title{Assignment 6} 
 \author[CS21BTECH11021]{Harshit Pant\\CS21BTECH11021}
 \date{}
@@ -26,10 +27,14 @@
 %\begin{abstract}
 %This document contains the solution to Example 2.15  of Chapter 2 (The Axioms Of Probabiltiy) from the book Probability, Random Variables, and Stochastic Processes by Athanasios Papoulis.
 %\end{abstract}
-\textbf{Example 2.15 [Papoulis]:} A certain test for a particular cancer is known to be 95$\%$ accurate. A person submits to the test and the results are positive. Suppose that the person comes from a population of 100,000 where 2,000 people suffer from that disease. What can we conclude about the probability that the person under test has that particular cancer?
+\begin{block}{\textbf{Example 2.15 [Papoulis]:}}
+ A certain test for a particular cancer is known to be 95$\%$ accurate. A person submits to the test and the results are positive. Suppose that the person comes from a population of 100,000 where 2,000 people suffer from that disease. What can we conclude about the probability that the person under test has that particular cancer?
+ \end{block}
 \end{frame}
-\begin{frame}
-Let $X_1$ and $X_2$ be two Bernoulli Random Variables such that,
+\begin{frame}{Answer}
+\begin{exampleblock}{}
+Let $X_1$ and $X_2$ be two Bernoulli Random Variables such that
+\end{exampleblock}
 \begin{table}[H]
 \centering
 \input{table1.tex}
@@ -43,12 +48,27 @@ Let $X_1$ and $X_2$ be two Bernoulli Random Variables such that,
 \label{table:RV2}
 \end{table}
 \end{frame}
-\begin{frame}
+\begin{frame}{Answer}
+\begin{block}{Given:}
+\begin{align}
+\pr{X_1=1}&=0.02\\
+\pr{X_2=1|X_1=1}&=0.95\\
+\pr{X_2=0|X_1=1}&=0.05\\
+\pr{X_2=0|X_1=0}&=0.95
+\end{align}
+\end{block}
 \begingroup
 \addtolength{\jot}{.1in}
 \begin{align}
 \pr{X_1=1|X_2=1}&=\dfrac{\pr{X_2=1|X_1=1}\pr{X_1=1}}{\pr{X_2=1}}\\
-\pr{X_2=1}&=\sum_{i=0}^1 \pr{X_2=1|X_1=i}\pr{X_1=i}\\
+\pr{X_2=1}&=\sum_{i=0}^1 \pr{X_2=1|X_1=i}\pr{X_1=i}
+\end{align}
+\endgroup
+\end{frame}
+\begin{frame}{Answer}
+\begingroup
+\addtolength{\jot}{.1in}
+\begin{align}
 \pr{X_2=1}&=0.05\times0.98 +0.95\times0.02\\
 \pr{X_2=1}&=0.068\\
 \pr{X_1=1|X_2=1}&=\dfrac{0.95\times0.02}{0.068}\\
@@ -56,8 +76,6 @@ Let $X_1$ and $X_2$ be two Bernoulli Random Variables such that,
 \pr{X_1=1|X_2=1}&=0.2794
 \end{align}
 \endgroup
-\end{frame}
-\begin{frame}{Answer}
-Baye's theorem suggests that there is a 27.94$\%$ chance that this person has cancer even given he/she has been tested positive.
+Baye's theorem suggests that there is a $\fbox{27.94\%}$ chance that this person has cancer given he/she has been tested positive.
 \end{frame}
 \end{document}
