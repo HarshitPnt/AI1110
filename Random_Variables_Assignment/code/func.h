@@ -155,3 +155,65 @@ void maxProbError(){
     i+=0.1;
   }
 }
+
+void chi(char *str1, char *str2,char *str3,int len){
+	gaussian("gau1.dat",len,36);
+    sleep(1);
+    gaussian("gau2.dat",len,36);
+    FILE* fp1 =fopen(str1,"r");
+    FILE* fp2 =fopen(str2,"r");
+    FILE* fp3 =fopen(str3,"w");
+
+    double var1;
+    double var2;
+    double var3;
+    while(fscanf(fp1,"%lf",&var1)!=-1){
+        fscanf(fp2,"%lf",&var2);
+        var3=pow(var1,2)+ pow(var2,2);
+        fprintf(fp3,"%lf\n",var3);
+        }
+        fclose(fp1);
+        fclose(fp3);
+        fclose(fp2);
+}
+
+void gen_root(char *str,char *str2){
+	FILE* fp =fopen(str,"r");
+	FILE* fp2=fopen(str2,"w");
+	double var;
+	while(fscanf(fp,"%lf",&var)!=-1){
+		fprintf(fp2,"%lf\n",pow(var,0.5));
+		// printf("%lf\n",var);
+	}
+	fclose(fp);
+	fclose(fp2);
+}
+
+// void gen_rayl(char* gau1,char* gau2,char *str,int len,double gamma){
+// 	FILE* fp =fopen(str,"w");
+// 	gaussian(gau1,1000000,12);
+// 	gaussian(gau2,1000000,12);
+// 	FILE* fp2=fopen(gau1,"r");
+// 	FILE* fp3=fopen(gau2,"r");
+	
+	
+// 	}
+
+void myChi(char* str,int num, int len){
+	FILE* fp=fopen(str,"w");
+
+	for(int i = 0; i< len;++i){
+		double chi=0;
+		for (int j =0;j<num;++j){
+			double temp=0;
+			for(int k=0;k<12;++k){
+				temp+=(double)rand()/RAND_MAX;
+			}
+			temp-=6;
+			chi+=temp*temp;
+			
+		}
+		fprintf(fp,"%lf\n",chi);
+	}
+	fclose(fp);
+}
