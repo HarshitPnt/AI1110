@@ -1,0 +1,85 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usepackage{enumerate}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{setspace}
+%\usepackage{gensymb}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{cellspace}
+\usepackage{longtable}
+\usepackage{hhline}
+\def\inputGnumericTable{}
+\usepackage{bigstrut}
+\newcounter{saveenumerate}
+\newcommand{\saveenumerate}{\setcounter{saveenumerate}{\value{enumi}}}
+\newcommand{\restartenumerate}{\setcounter{enumi}{\value{saveenumerate}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\setlength{\abovedisplayskip}{0in}
+\title{Assignment 8} 
+\author[CS21BTECH11021]{Harshit Pant\\CS21BTECH11021}
+\date{}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+%\logo{\large \LaTeX{}}
+\begin{document}
+\begin{block}
+\titlepage
+\end{block}
+\begin{frame}{Question}
+\begin{block}{Question:}
+The resistors $r_1$,$r_2$,$r_3$ and $r_4$ are independent random variables and each is uniform in the interval $(450,550)$. Using the central limit theorem, find $\pr{1900\leq r_1+r_2+r_3+r_4\leq 2100}$.
+\end{block}
+\end{frame}
+\begin{frame}{CLT}
+\begin{block}{Central limit Theorem:}
+If $X_1,X_2,\ldots,X_n\ldots$ is a sequence of random variables drawn from a population with an overall mean $\mu$ and variance $\sigma^2$, and if $\overline{X_n}$ is the sample mean of the first $n$ samples, then the limiting form of the distribution, $Z=\displaystyle{\lim\limits_{n\to\infty}\brak{\dfrac{\overline{X_n}-\mu}{\frac{\sigma}{\sqrt{n}}}}}$, is a standard normal distribution.
+\end{block}
+\end{frame}
+\begin{frame}{Solution:}
+\begingroup
+\addtolength{\jot}{.1in}
+Since $r_i \,\forall i\in\{1,2,3,4\}$ are i.i.d and are uniformly distributed in the interval $(450,550)$,
+\begin{align}
+E(r_i)&=500\\
+\sigma_i^2&=\int \limits_{-\infty}^\infty {(r-E(r_i))}^2\rho(r)dr\\
+&=\int\limits_{450}^{550} {(r-E(r_i))}^2\times \frac1{100}dr\\
+&=\int\limits_{450}^{550} \frac{{(r-500)}^2}{100}dr\\
+\end{align}
+\endgroup
+\end{frame}
+\begin{frame}{Solution:}
+\begingroup
+\addtolength{\jot}{.1in}
+\begin{align}
+&=\int\limits_{-50}^{50} \frac{r^2}{100}dr\\
+&=\frac{50^2}{3}
+\end{align}
+Let,
+\begin{align}
+Y&=\sum_1^4 r_i
+\end{align}
+Using Central Limit Theorem:
+\begin{align}
+f_Y(y)&\sim N\brak{4\times500,\frac{2\times50}{\sqrt{3}}}
+\end{align}
+\endgroup
+\end{frame}
+\begin{frame}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{./PDF_assign8.png}
+\caption{PDF of R}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begingroup
+\addtolength{\jot}{.1in}
+\begin{align}
+\pr{1900\leq y \leq 2100}&=\int\limits_{1900}^{2100}f_Y(y)dy\\
+&=\int\limits_{1900}^{2100} \dfrac{1}{\sigma\sqrt{2 \pi}}e^{-{(\frac{y-\mu}{\sqrt{2}\sigma})}^2}dy\\
+&=\int\limits_{-100}^{100} \dfrac{1}{\sigma\sqrt{2 \pi}}e^{-\frac{y^2}{2\sigma^2}}dy\\
+&\approx0.91673
+\end{align}
+\endgroup
+\end{frame}
+\end{document}
