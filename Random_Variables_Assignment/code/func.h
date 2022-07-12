@@ -121,7 +121,6 @@ double max_error(int mode,char* str){
 	double var1,var2;
 	while(fscanf(fp1,"%lf",&var1)!=-1){
 		fscanf(fp2,"%lf",&var2);
-		//printf("%lf %lf\n",var1,var2);
 		if(var2==1)
 			count_total_1++;
 		else
@@ -134,21 +133,13 @@ double max_error(int mode,char* str){
 			++count_fav;
 		}
 		}
-		
-
-	//mode==1?printf("%d %d\n",count_total_1,count_fav):printf("%d %d\n",count_total_2,count_fav);
 	return mode==1?((double)(count_fav)/count_total_1):((double)(count_fav)/count_total_2);
 }
 
 void maxProbError(){
   for(double i=0.1;i<=2.0;){
     max_like("ber.dat","../problem2/gau.dat","./Data/max.dat",i);
-    //printf("File Made\n");
     FILE* fp=fopen("prob.dat","a");
-    // printf("%lf",i);
-
-    // fprintf(fp,"%lf\n",max_error(1,"./Data/max.dat"));
-    // fprintf(fp,"%lf\n",max_error(-1,"./Data/max.dat"));
     double var1=max_error(1,"./Data/max.dat");
     double var2=max_error(-1,"./Data/max.dat");
     fprintf(fp,"%lf\n",(var1+var2)/2);
@@ -189,15 +180,18 @@ void gen_root(char *str,char *str2){
 	fclose(fp2);
 }
 
-// void gen_rayl(char* gau1,char* gau2,char *str,int len,double gamma){
-// 	FILE* fp =fopen(str,"w");
-// 	gaussian(gau1,1000000,12);
-// 	gaussian(gau2,1000000,12);
-// 	FILE* fp2=fopen(gau1,"r");
-// 	FILE* fp3=fopen(gau2,"r");
-	
-	
-// 	}
+double myGauss(){
+	double temp=0;
+			for(int k=0;k<12;++k){
+				temp+=(double)rand()/RAND_MAX;
+			}
+			temp-=6;
+	return temp;
+}
+
+
+
+
 
 void myChi(char* str,int num, int len){
 	FILE* fp=fopen(str,"w");
@@ -205,15 +199,45 @@ void myChi(char* str,int num, int len){
 	for(int i = 0; i< len;++i){
 		double chi=0;
 		for (int j =0;j<num;++j){
-			double temp=0;
-			for(int k=0;k<12;++k){
-				temp+=(double)rand()/RAND_MAX;
-			}
-			temp-=6;
+			double temp=myGauss();
 			chi+=temp*temp;
 			
 		}
 		fprintf(fp,"%lf\n",chi);
 	}
 	fclose(fp);
+}
+
+
+
+void gen_rayl(char *str,  double gamma,int num){
+  FILE *fp=fopen(str,"w") , *fp2 = fopen("ber.dat","r");
+  double bern = 0;
+  while(fscanf(fp2,"%lf",&bern)!=-1){
+    double sig = gamma/2;
+	double a=0;
+	double sum=0;
+	for(int i =0 ;i < num;++i){
+		a = myGauss()*sqrt(sig);
+		sum+=a*a;
+	}
+	 double final = bern*sqrt(sum) + myGauss();
+
+    fprintf(fp, "%lf\n", final);
+  }
+  fclose(fp);
+  return;
+}
+
+void prob_err(char* str , double a){
+  FILE *fp, *fp2 = fopen(str, "w");
+  double temp;
+  for(int i=1;i<=10; i++){
+    gen_rayl("cond_prob.dat", a*i,2);
+    temp = max_error(1,"cond_prob.dat");
+    fprintf(fp2,"%lf\n",temp);
+  }
+
+  fclose(fp2);
+  return;
 }
